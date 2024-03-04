@@ -23,11 +23,11 @@ interface UsersResponse {
   };
 }
 
-export const requestGetAllUsers = async (): Promise<Users[]> => {
+export const requestGetAllUsers = async () => {
   try {
     const response: UsersResponse = await getAllUsers();
     const users = response?.data?.data.map((item: Users, index: number) => ({ ...item, index }));
-    return users || [];
+    return users;
   } catch (error) {
     console.log(error);
     return [];
